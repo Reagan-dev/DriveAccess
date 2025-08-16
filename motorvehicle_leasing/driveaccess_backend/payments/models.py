@@ -9,7 +9,7 @@ class payment(models.Model):
     payment_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='payments')
     lease_id = models.ForeignKey('leases.lease', on_delete=models.CASCADE, related_name='payments')
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     payment_date = models.DateTimeField(auto_now_add=True)
     payment_method = models.CharField(max_length=50, choices=[
         ('credit_card', 'Credit Card'),
