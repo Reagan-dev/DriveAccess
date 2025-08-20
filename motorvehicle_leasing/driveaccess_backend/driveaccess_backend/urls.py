@@ -27,4 +27,8 @@ urlpatterns = [
 
     # Include app URLs
     path('api/accounts/', include('accounts.urls')),
+    path('api/vehicles/', include('vehicles.urls')),
+    path('api/qualifications/', include('qualifications.urls')),
+    path('api/leases/', include('leases.urls')),
+    path('api/payments/', include('payments.urls')),
 ]

@@ -12,6 +12,11 @@ class LeaseSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Invalid status value. Should be one of: active, pending, returned, rejected.")
         if data['lease_type'] not in ['hourly', 'daily', 'weekly']:
             raise serializers.ValidationError("Invalid lease type. Should be one of: hourly, daily, weekly.")
-        if data['start_date'] >= data['end_date']:
-            raise serializers.ValidationError("Start date must be before end date.")
+        if data['start_time'] >= data['end_time']:
+            raise serializers.ValidationError("Start time must be before end time.")
         return data
+    
+    def validate_total_cost(self, value):
+        if value < self.initial_data.get('total_cost', 0):
+            raise serializers.ValidationError("please provide a valid total cost.")
+        return value

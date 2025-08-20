@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'qualifications',  # Qualifications management app
     'leases',  # Leasing management app
     'payments',  # Payment management app
-    'vehiclequalifications',  # Vehicle qualifications management app
     'rest_framework_simplejwt',  # JWT authentication
     'rest_framework_simplejwt.token_blacklist',  # Token blacklist for JWT
     'rest_framework.authtoken',  # Token authentication

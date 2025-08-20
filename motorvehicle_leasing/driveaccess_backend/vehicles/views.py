@@ -30,6 +30,11 @@ class VehicleCreateView(generics.CreateAPIView):
     serializer_class = VehicleSerializer
     permission_classes = [IsAdminUser, IsAuthenticated]
 
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({"request": self.request})
+        return context
+
     def create(self, request, *args, **kwargs):
        if not request.user.is_admin:
             raise PermissionDenied("You do not have permission to add vehicles.")
@@ -43,10 +48,19 @@ class VehicleUpdateView(generics.UpdateAPIView):
 
     def get_queryset(self):
         return Vehicle.objects.all()
+    
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context.update({"request": self.request})
+        return context
 
     def update(self, request, *args, **kwargs):
-        partial = kwargs.pop('partial', False)
+        partial = kwargs.pop('partial', True)
         instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        serializer.is_valid(raise_exception=True)
+        self.perform_update(serializer)
+        return Response(serializer.data)
 
         if "soft_delete" in request.data and request.data["soft_delete"] is True:
             instance.status = "maintenance"
