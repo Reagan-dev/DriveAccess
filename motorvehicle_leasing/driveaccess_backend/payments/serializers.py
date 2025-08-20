@@ -8,7 +8,7 @@ class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = payment
         fields = '__all__'
-        read_only_fields = ('payment_id', 'lease_id', 'payment_date')
+        read_only_fields = ('payment_id', 'payment_date',)
 
     def validate_amount(self, amount):
         if amount <= 0:
@@ -29,8 +29,8 @@ class PaymentSerializer(serializers.ModelSerializer):
 
         if not lease:
             raise serializers.ValidationError("lease is required.")
-        
-        if lease.user_id != user:
+
+        if lease.user_id.id != user.id:
             raise serializers.ValidationError("User does not have permission to make this payment for the lease.")
         
         if hasattr(lease, 'total_cost') and amount < lease.total_cost:

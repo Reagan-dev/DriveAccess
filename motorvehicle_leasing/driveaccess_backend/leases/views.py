@@ -23,6 +23,7 @@ class LeaseDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = lease.objects.all()
     serializer_class = LeaseSerializer
     permission_classes = [IsAuthenticated]
+    lookup_field = 'lease_id'
 
     def perform_update(self, serializer):
         if not self.request.user.is_staff:
