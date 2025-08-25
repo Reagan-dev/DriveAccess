@@ -1,1 +1,1 @@
-web: gunicorn motorvehicle_leasing.driveaccess_backend.wsgi:application
+web: gunicorn driveaccess_backend.wsgi:application
