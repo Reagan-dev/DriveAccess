@@ -172,7 +172,7 @@ REST_FRAMEWORK = {
         'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
         'ROTATE_REFRESH_TOKENS': True,
         'BLACKLIST_AFTER_ROTATION': True,
-        'USER_ID_FIELD': 'user_id',
-        'USER_ID_CLAIM': 'user_id',
+        "USER_ID_FIELD": "user_id",
+        "USER_ID_CLAIM": "user_id",
     },
 }
