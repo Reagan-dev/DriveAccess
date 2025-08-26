@@ -44,9 +44,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-    @property
-    def id(self):
-        return self.user_id
+   
 
     def save(self, *args, **kwargs):
         # Ensure password is hashed before saving
