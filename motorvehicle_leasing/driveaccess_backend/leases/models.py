@@ -32,4 +32,4 @@ class lease(models.Model):
         ordering = ['-start_time']
 
     def __str__(self):
-        return f"Lease {self.lease_id} - {self.user_id.name} ({self.vehicle_id.licence_plate})"
+        return f"Lease {self.lease_id} - {self.user.name} ({self.vehicle_id.licence_plate})"

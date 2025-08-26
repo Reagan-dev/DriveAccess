@@ -22,7 +22,7 @@ class payment(models.Model):
         ('failed', 'Failed'),
     ], default='pending')
 
-    
+
     @property
     def id(self):
         return self.payment_id
@@ -33,4 +33,4 @@ class payment(models.Model):
         ordering = ['-payment_date']
 
     def __str__(self):
-        return f"Payment {self.payment_id} - {self.user_id.name} ({self.amount})"
+        return f"Payment {self.payment_id} - {self.user.name} ({self.amount})"

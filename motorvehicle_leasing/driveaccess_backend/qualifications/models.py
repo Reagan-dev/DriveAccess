@@ -29,4 +29,4 @@ class Qualification(models.Model):
         ordering = ['-issue_date']
 
     def __str__(self):
-        return f"{self.user_id.name} - {self.get_qualification_type_display()} ({self.issue_date})"
+        return f"{self.user.name} - {self.get_qualification_type_display()} ({self.issue_date})"
