@@ -4,7 +4,7 @@ from django.utils import timezone
 
 # Create your models here.
 class Vehicle(models.Model):
-    vehicle_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    vehicle_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True, primary_key=True)
     type = models.CharField(max_length=50, choices=[
         ('matatu', 'Matatu'),
         ('motorcycle', 'Motorcycle'),

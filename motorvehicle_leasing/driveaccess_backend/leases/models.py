@@ -4,7 +4,7 @@ import uuid
 
 # Create your models here.
 class lease(models.Model):
-    lease_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+    lease_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True, primary_key=True)
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='leases')
     vehicle_id = models.ForeignKey('vehicles.Vehicle', on_delete=models.CASCADE, related_name='leases')
     start_time = models.DateTimeField(auto_now_add=True)
