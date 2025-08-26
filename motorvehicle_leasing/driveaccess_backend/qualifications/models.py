@@ -18,6 +18,10 @@ class Qualification(models.Model):
     expiry_date = models.DateField()
     approved = models.BooleanField(default=False)
 
+
+    def id(self):
+        return self.qualification_id
+
         
     class Meta:
         verbose_name = 'Qualification'

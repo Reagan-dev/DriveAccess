@@ -18,7 +18,10 @@ class Vehicle(models.Model):
     ], default='available')
     hourly_rate = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
-    location = models.CharField(max_length=255, blank=True, null=True)  
+    location = models.CharField(max_length=255, blank=True, null=True) 
+
+    def id(self):
+        return self.vehicle_id 
 
     def mark_as_maintenance(self):
         self.status = 'maintenance'

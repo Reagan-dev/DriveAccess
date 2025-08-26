@@ -22,6 +22,9 @@ class payment(models.Model):
         ('failed', 'Failed'),
     ], default='pending')
 
+    def id(self):
+        return self.payment_id
+
     class Meta:
         verbose_name = 'Payment'
         verbose_name_plural = 'Payments'
