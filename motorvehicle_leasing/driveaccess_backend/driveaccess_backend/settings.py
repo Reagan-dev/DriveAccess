@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     'payments',  # Payment management app
     'rest_framework_simplejwt',  # JWT authentication
     'rest_framework_simplejwt.token_blacklist',  # Token blacklist for JWT
-    'rest_framework.authtoken',  # Token authentication
     'corsheaders',  # CORS headers
 ]
 
