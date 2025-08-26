@@ -20,6 +20,8 @@ class Vehicle(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     location = models.CharField(max_length=255, blank=True, null=True) 
 
+    
+    @property
     def id(self):
         return self.vehicle_id 
 

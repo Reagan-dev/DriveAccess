@@ -22,6 +22,8 @@ class payment(models.Model):
         ('failed', 'Failed'),
     ], default='pending')
 
+    
+    @property
     def id(self):
         return self.payment_id
 

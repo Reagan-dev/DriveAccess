@@ -18,7 +18,7 @@ class Qualification(models.Model):
     expiry_date = models.DateField()
     approved = models.BooleanField(default=False)
 
-
+    @property
     def id(self):
         return self.qualification_id
 

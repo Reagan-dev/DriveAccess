@@ -22,6 +22,7 @@ class lease(models.Model):
     ], default='pending')
     total_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
 
+    @property
     def id(self):
         return self.lease_id
 
