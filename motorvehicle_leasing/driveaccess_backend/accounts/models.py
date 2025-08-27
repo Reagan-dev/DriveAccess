@@ -28,7 +28,7 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    user_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
+    user_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     phone_number = models.CharField(max_length=15, unique=True)
@@ -44,9 +44,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-    @property
-    def id(self):
-        return self.user_id
+   
 
     def save(self, *args, **kwargs):
         # Ensure password is hashed before saving

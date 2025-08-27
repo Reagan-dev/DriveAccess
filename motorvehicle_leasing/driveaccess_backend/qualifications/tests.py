@@ -34,7 +34,7 @@ class QualificationTests(APITestCase):
 
         # Default qualification payload
         self.valid_payload = {
-            "user_id": str(self.user.user_id),  # ForeignKey requires user id
+            "user_id": str(self.user.id),  # ForeignKey requires user id
             "qualification_type": "driving_license",
             "issue_date": datetime.date(2023, 8, 21),
             "expiry_date": datetime.date(2025, 8, 21),
@@ -86,7 +86,7 @@ class QualificationTests(APITestCase):
         )
         url = reverse("qualification-detail", args=[qualification.qualification_id])
         update_data = {
-            "user_id": str(self.user.user_id),
+            "user_id": str(self.user.id),
             "qualification_type": "PSV_license",
             "issue_date": datetime.date(2023, 1, 1),
             "expiry_date": datetime.date(2026, 1, 1),

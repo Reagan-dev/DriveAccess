@@ -4,7 +4,7 @@ import uuid
 
 # Create your models here.
 class lease(models.Model):
-    lease_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
+    lease_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='leases')
     vehicle_id = models.ForeignKey('vehicles.Vehicle', on_delete=models.CASCADE, related_name='leases')
     start_time = models.DateTimeField(auto_now_add=True)
@@ -22,10 +22,7 @@ class lease(models.Model):
     ], default='pending')
     total_cost = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
 
-    @property
-    def id(self):
-        return self.lease_id
-
+   
     class Meta:
         verbose_name = 'Lease'
         verbose_name_plural = 'Leases'

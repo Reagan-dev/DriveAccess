@@ -6,7 +6,7 @@ from django.utils import timezone
 
 # Create your models here.
 class payment(models.Model):
-    payment_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
+    payment_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='payments')
     lease_id = models.ForeignKey('leases.lease', on_delete=models.CASCADE, related_name='payments')
     amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
@@ -23,9 +23,7 @@ class payment(models.Model):
     ], default='pending')
 
 
-    @property
-    def id(self):
-        return self.payment_id
+    
 
     class Meta:
         verbose_name = 'Payment'

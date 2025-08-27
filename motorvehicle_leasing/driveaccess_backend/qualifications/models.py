@@ -8,7 +8,7 @@ from django.utils import timezone
 
 # Create your models here.
 class Qualification(models.Model):
-    qualification_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
+    qualification_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     user_id = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='qualifications')
     qualification_type = models.CharField(max_length=50, choices=[
         ('driving_license', 'Driving License'),
@@ -18,10 +18,7 @@ class Qualification(models.Model):
     expiry_date = models.DateField()
     approved = models.BooleanField(default=False)
 
-    @property
-    def id(self):
-        return self.qualification_id
-
+   
         
     class Meta:
         verbose_name = 'Qualification'

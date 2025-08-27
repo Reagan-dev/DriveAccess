@@ -61,8 +61,8 @@ class LeaseTests(TestCase):
     def test_create_lease_as_admin(self):
         url = reverse("lease-list")
         payload = {
-            "user_id": self.admin_user.user_id,
-            "vehicle_id": self.vehicle.vehicle_idid,
+            "user_id": self.admin_user.id,
+            "vehicle_id": self.vehicle.id,
             "lease_type": "weekly",
             "status": "pending",
             "total_cost": "2000.00"
@@ -75,8 +75,8 @@ class LeaseTests(TestCase):
         self.client.force_authenticate(user=self.normal_user)
         url = reverse("lease-list")
         payload = {
-            "user_id": self.normal_user.user_id,
-            "vehicle_id": self.vehicle.vehicle_id,
+            "user_id": self.normal_user.id,
+            "vehicle_id": self.vehicle.id,
             "lease_type": "hourly",
             "status": "pending",
             "total_cost": "500.00"

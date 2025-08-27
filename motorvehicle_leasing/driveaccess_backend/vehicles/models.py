@@ -4,7 +4,7 @@ from django.utils import timezone
 
 # Create your models here.
 class Vehicle(models.Model):
-    vehicle_id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
+    vehicle_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     type = models.CharField(max_length=50, choices=[
         ('matatu', 'Matatu'),
         ('motorcycle', 'Motorcycle'),
@@ -20,11 +20,8 @@ class Vehicle(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     location = models.CharField(max_length=255, blank=True, null=True) 
 
-    
-    @property
-    def id(self):
-        return self.vehicle_id 
 
+    
     def mark_as_maintenance(self):
         self.status = 'maintenance'
         self.save()

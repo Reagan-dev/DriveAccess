@@ -72,13 +72,13 @@ class PaymentTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         # Only their payments should be visible
         for p in response.data:
-            self.assertEqual(p["user_id"], self.normal_user.user_id)
+            self.assertEqual(p["user_id"], self.normal_user.id)
 
     def test_create_payment_for_own_lease(self):
         self.client.force_authenticate(user=self.normal_user)
         url = reverse("payment-list-create")
         payload = {
-            "lease_id": self.lease.lease_id,
+            "lease_id": self.lease.id,
             "amount": "1500.00",
             "payment_method": "credit_card",
             "status": "pending"
@@ -91,7 +91,7 @@ class PaymentTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data["amount"], "1500.00")
         self.assertEqual(response.data["payment_method"], "credit_card")
-        self.assertEqual(response.data["lease_id"], self.lease.lease_id)
+        self.assertEqual(response.data["lease_id"], self.lease.id)
 
     def test_create_payment_for_other_users_lease_forbidden(self):
         # Lease owned by admin
@@ -105,7 +105,7 @@ class PaymentTests(TestCase):
         self.client.force_authenticate(user=self.normal_user)
         url = reverse("payment-list-create")
         payload = {
-            "lease_id": str(admin_lease.lease_id),
+            "lease_id": str(admin_lease.id),
             "amount": "500.00",
             "payment_method": "mobile_money",
             "status": "pending"
