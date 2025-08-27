@@ -103,7 +103,7 @@ DATABASES = {
 }
 
 # Update database configuration from $DATABASE_URL environment variable
-DATABASE_URL = os.environ.get('postgresql://driveaccess_user:6l85fxinzFjOR45J3M9Ewla6kueEOWOT@dpg-d2m6n6vdiees73ckheqg-a/driveaccess')
+DATABASE_URL = os.environ.get('DATABASE_URL')
 if DATABASE_URL:
     DATABASES["default"] = dj_database_url.config(
         default=DATABASE_URL,
