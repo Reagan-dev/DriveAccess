@@ -33,6 +33,7 @@ class PaymentListCreateView(generics.ListCreateAPIView):
 class PaymentDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PaymentSerializer
     permission_classes = [IsAuthenticated]
+    lookup_field = 'payment_id'
 
     def get_queryset(self):
         # Admins see all, users see only their own
@@ -54,6 +55,7 @@ class PaymentDetailView(generics.RetrieveUpdateDestroyAPIView):
 # Approve payment (staff only)
 class PaymentApprove(APIView):
     permission_classes = [IsAuthenticated]
+    lookup_field = 'payment_id'
 
     def post(self, request, payment_id):
         payment_instance = get_object_or_404(payment, payment_id=payment_id)
@@ -69,6 +71,7 @@ class PaymentApprove(APIView):
 # Reject payment (staff only)
 class PaymentReject(APIView):
     permission_classes = [IsAuthenticated]
+    lookup_field = 'payment_id'
 
     def post(self, request, payment_id):
         payment_instance = get_object_or_404(payment, payment_id=payment_id)
