@@ -22,7 +22,7 @@ Where buying vehicles like motorbikes or public service vans (matatus) is out of
 - Vehicle management (Add, view, update, delete vehicles).
 - Lease management (Assign vehicle to user).
 - Secure API endpoints.
-- patment management
+- payment management
 
 ## ERD
 https://miro.com/app/board/uXjVJUkaIZk=/?moveToWidget=3458764638363587646&cot=14
