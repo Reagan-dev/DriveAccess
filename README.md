@@ -8,6 +8,7 @@ DriveAccess is a complete backend system that enables verified and qualified use
 - Installation
 - Environment Variables
 - Endpoints
+- Example usage
 - Deployment
 - Contact
 
@@ -85,6 +86,16 @@ https://driveaccess-54a0.onrender.com/
 - *DELETE* /api/payments/payments/<uuid:payment_id>/  (only admins)
 - *POST*  /api/payments/payments/<uuid:payment_id>/approve/  (only admins)
 - *POST*  /api/payments/payments/<uuid:payment_id>/reject/  (onlu admins are allowed to reject payments)
+
+
+## example usage(postman collection)
+
+- https://reagansimiyu38-1179677.postman.co/workspace/Reagan-Simiyu's-Workspace~142b0774-5a9f-40d0-8224-48d48d5378c8/collection/47350077-62727690-47fc-47a1-b742-c8322371aa50?action=share&creator=47350077
+
+- Above is the link to postman collection that contai tests of api explaining example usage. the collection is called drive access. Tknow the fields body you are supposed to send together with a request mybe to create a vehicle or payment all are in the collection.
+- Do not forget that in some request you will need authorization an access token to do so mybe as an admin or as a normal user.
+- i have one admin named (Reagan Simiyu). the request that i used is the one i named token access the email and pasword are there.
+
 
 ## deployment
 host on render
